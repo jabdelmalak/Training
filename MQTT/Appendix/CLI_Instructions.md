@@ -2,8 +2,7 @@
  
 We'll need to create the docker container with the instruction below. If the ```eclipse-mosquitto``` image is not present in your docker system, this instruction will install the image onto the device.
 ```
-docker run -d --restart unless-stopped -p 1883:1883 -p 9001:9001 -v mosquitto:/mosquitto/config/ -v /mosquitto/data -v /mosquitto/log eclipse-mosquito
-
+docker run -d --restart unless-stopped -p 1883:1883 -v /home/docker/volumes/mosquitto/config/mosquitto.conf eclipse-mosquitto:1.5
 ```
 
 
@@ -13,9 +12,9 @@ docker run -d --restart unless-stopped -p 1883:1883 -p 9001:9001 -v mosquitto:/m
 
 ```--restart unless-stopped``` allows the container to run automatically on boot up unless the user has stopped the container before power cycle.
 
-```-p```: Port flag, which tells the container to run on a specific port within the local host. This example has the container pointing to multiple ports. An alternative would be allowing the container to decide the port using ```--network=host```. (More info here: https://docs.docker.com/network/host/)
+```-p```: Port flag, which tells the container to run on a specific port within the local host. An alternative would be allowing the container to decide the port using ```--network=host```. (More info here: https://docs.docker.com/network/host/)
 
-```-v```: The volume flag, which houses the location of persistent data tied to the container. In this case, we call the volume ```mosquitto```, which is an alias that points to the containers internal file structure...also called ```mosquitto```.
+```-v```: The volume flag, which houses the location of persistent data tied to the container.
 
 Once we've entered the run command, check to see if the container is running with ```docker ps -a```. This commmand will give you a list of all containers within the device (whether running or not) as well as the status on the container.
 
