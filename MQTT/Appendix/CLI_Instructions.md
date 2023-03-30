@@ -2,7 +2,8 @@
  
 We'll need to create the docker container with the instruction below. If the ```eclipse-mosquitto``` image is not present in your docker system, this instruction will install the image onto the device.
 ```
-docker run -d --restart unless-stopped -p 1883:1883 -v /home/docker/volumes/mosquitto/config/mosquitto.conf eclipse-mosquitto:1.5
+docker run -d -p 1883:1883 --restart=unless-stopped  -v mosquitto:/mosquitto  eclipse-mosquitto:1.5
+
 ```
 
 
