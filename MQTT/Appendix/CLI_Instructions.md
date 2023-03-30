@@ -45,6 +45,8 @@ nano /home/docker/volumes/mosquitto/_data/config/mosquitto.conf
 
 Under ```Default Listener``` change the instruction from ```#port 1883``` to ```port 8883```. Using ```ctrl-x``` to exit the nano editor, press ```y``` to save the changes to the file.
 
+![image](https://user-images.githubusercontent.com/42245728/228904171-00d4b4df-b28a-49a1-9932-c2b266a9a41c.png)
+
 Then restart the container with:
 ```
 docker restart <container_ID>
