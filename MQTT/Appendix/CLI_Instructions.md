@@ -31,7 +31,7 @@ Once the container has been created, we can view the volumes and see the ```mosq
 ![image](https://user-images.githubusercontent.com/42245728/227012865-4a77abac-13e6-45b3-9a62-57cb18ac9ab5.png)
 
 # Encryption
- 
+## Changing to encrypted port
  When encrypting the MQTT message, you must use the secure port 8883 for communication. This is done by establishing the secure port in the run command as well as changing the default port in the config file within the volume.
  
 ```
@@ -51,3 +51,4 @@ Then restart the container with:
 ```
 docker restart <container_ID>
 ```
+## Creating and using certificates
