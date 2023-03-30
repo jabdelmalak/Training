@@ -30,5 +30,22 @@ Once the container has been created, we can view the volumes and see the ```mosq
  
 ![image](https://user-images.githubusercontent.com/42245728/227012865-4a77abac-13e6-45b3-9a62-57cb18ac9ab5.png)
 
-
+# Encryption
  
+ When encrypting the MQTT message, you must use the secure port 8883 for communication. This is done by establishing the secure port in the run command as well as changing the default port in the config file within the volume.
+ 
+```
+ docker run -d -p 8883:8883 --restart=unless-stopped  -v mosquitto:/mosquitto  eclipse-mosquitto:1.5
+```
+Access the mosquitto.conf file, which houses all broker settings and set the default port to port 8883. Use the following command to access and edit the conf file:
+
+```
+nano /home/docker/volumes/mosquitto/_data/config/mosquitto.conf
+```
+
+Under ```Default Listener``` change the instruction from ```#port 1883``` to ```port 8883```. Using ```ctrl-x``` to exit the nano editor, press ```y``` to save the changes to the file.
+
+Then restart the container with:
+```
+docker restart <container_ID>
+```
