@@ -52,3 +52,39 @@ Then restart the container with:
 docker restart <container_ID>
 ```
 ## Creating and using certificates
+
+In order to create certficates we'll use the openssl command which will create the keys and certs within the root directory. Once the credentials are created, we must store them within the mosquitto volume and reference their location in the ```mosquitto.conf``` file.
+
+To create the credentials use the following commands:
+
+```
+openssl genrsa -des3 -out ca.key 2048
+````
+```
+openssl req -new -x509 -days 1826 -key ca.key -out ca.crt
+```
+```
+openssl genrsa -out server.key 2048
+```
+```
+openssl req -new -out server.csr -key server.key
+```
+```
+openssl x509 -req -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt -days 360
+```
+
+You'll note that there are several new credential files in your root directory. The ones that we will route to the broker are the ```ca.crt server.key server.crt``` files. In order to push those files into the mosquitto broker we'll use the follow docker copy commands:
+
+```
+docker cp ca.crt <container_ID>:/mosquitto/
+```
+```
+docker cp server.key <container_ID>:/mosquitto/
+```
+```
+docker cp server.crt <container_ID>:/mosquitto/
+```
+
+Change the ```mosquitto.conf```  in the ```Certificated based SSL/TLS support```
+
+![image](https://user-images.githubusercontent.com/42245728/229165929-64137313-146a-4c14-bbff-baaa968e41d8.png)
