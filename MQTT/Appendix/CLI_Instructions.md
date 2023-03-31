@@ -91,7 +91,7 @@ Change the ```mosquitto.conf```  in the ```Certificated based SSL/TLS support```
 
 Restart the docker container to ensure that the broker configuration changes have taken place.
 
-Using ```ftp```, grab the ca.crt file from the broker device and load it into your pub/sub client. 
+Using ```ftp```, grab the ca.crt file from the broker device and load it into your pub/sub client. Also ensure to uncheck ```Verify server certificate```.
 
 ![image](https://user-images.githubusercontent.com/42245728/229168644-ff2db9c6-9a2e-4a56-946d-b18146d978c2.png)
 
