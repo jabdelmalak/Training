@@ -88,3 +88,13 @@ docker cp server.crt <container_ID>:/mosquitto/
 Change the ```mosquitto.conf```  in the ```Certificated based SSL/TLS support```
 
 ![image](https://user-images.githubusercontent.com/42245728/229165929-64137313-146a-4c14-bbff-baaa968e41d8.png)
+
+Restart the docker container to ensure that the broker configuration changes have taken place.
+
+Using ```ftp```, grab the ca.crt file from the broker device and load it into your pub/sub client. 
+
+![image](https://user-images.githubusercontent.com/42245728/229168644-ff2db9c6-9a2e-4a56-946d-b18146d978c2.png)
+
+Once you have that file into the device speaking to the broker. You can successfully initiate MQTT communication!
+
+![image](https://user-images.githubusercontent.com/42245728/229168845-1cb4ff5e-83a3-4b1b-afff-39af12c1f20e.png)
