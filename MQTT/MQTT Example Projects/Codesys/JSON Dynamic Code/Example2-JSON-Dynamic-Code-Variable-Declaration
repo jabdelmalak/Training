@@ -1,0 +1,26 @@
+PROGRAM Main
+VAR
+	
+//Variables for MQTT publish
+	oFbPublishMQTT_2 : WagoAppCloud.FbPublishMQTT_2(eConnection := eConnectionId.Connection1);
+	aBuffer			: ARRAY[0..1999] OF BYTE;
+	dwBytesCount 	: DWORD;
+
+	dwBusyCounter: DWORD;
+	dwErrorCounter: DWORD;
+	xTrigger		: BOOL;	
+	
+//Variables for JSON_Writer
+	oFbJSON : WagoappJSON.Fb_JSON_Writer_02;
+    MyTemplateString : STRING(JSON_MAX_STRING):= '{"val1": #Parameter, "val2" : #Parameter, "val3": #Parameter}'; //String template
+	MyValueArray : ARRAY[0..2] OF STRING; //Array of values, must start at index 0
+	xJSONTrigger	: BOOL; 
+	
+	value_var1 : INT; //Raw values to be transmitted. Must be converted to string first.
+	value_var2 : INT;
+	value_var3 : INT;
+		
+TimerOn: TON;	
+sPayload		: STRING(2000);	
+
+END_VAR

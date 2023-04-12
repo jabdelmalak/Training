@@ -1,0 +1,16 @@
+PROGRAM Main
+VAR
+	
+//Variables for MQTT publish
+	oFbPublishMQTT_2 : WagoAppCloud.FbPublishMQTT_2(eConnection := eConnectionId.Connection1);
+	aBuffer			: ARRAY[0..1999] OF BYTE;
+	dwBytesCount 	: DWORD;
+
+	dwBusyCounter: DWORD;
+	dwErrorCounter: DWORD;
+	xTrigger		: BOOL;	
+		
+TimerOn: TON;	
+sPayload		: STRING(2000);	
+
+END_VAR

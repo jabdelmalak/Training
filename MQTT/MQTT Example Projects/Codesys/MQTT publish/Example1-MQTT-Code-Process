@@ -1,0 +1,35 @@
+TimerOn(IN := TRUE, PT := T#1S);
+sPayload := '{"var1": 23, "var2": 46, "var3": 1}';
+
+	
+IF TimerOn.Q THEN
+	xTrigger := TRUE; 
+	TimerOn(IN := FALSE);
+
+	IF NOT oFbPublishMQTT_2.xBusy THEN
+
+		// Copy payload string
+		dwBytesCount := Length(sPayload);
+		MemCopy(pDest := ADR(aBuffer), pSource := ADR(sPayload), udiSize := dwBytesCount);
+		
+		// Trigger the transmission
+		xTrigger := TRUE;
+		
+	ELSE
+		// Busy statistics counter
+		dwBusyCounter := dwBusyCounter + 1;
+	END_IF
+	
+	IF oFbPublishMQTT_2.xError THEN
+		// Error statistics counter
+		dwErrorCounter := dwErrorCounter + 1;
+	END_IF
+	
+END_IF
+
+
+oFbPublishMqtt_2(sTopic:= '/v2.0/devices/joes_test',
+	eQualityOfService:= 1,
+	dwSize := dwBytesCount,
+	aData := aBuffer,
+	xTrigger := xTrigger);

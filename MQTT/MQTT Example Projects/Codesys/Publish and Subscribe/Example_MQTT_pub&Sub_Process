@@ -1,0 +1,62 @@
+TimerOn(IN := TRUE, PT := T#1S);
+
+value_var1  := 40;
+value_var2  := 50;
+value_var3  := 2;
+
+MyValueArray[0] := INT_TO_STRING(value_var1);
+MyValueArray[1] := INT_TO_STRING(value_var2);
+MyValueArray[2] := INT_TO_STRING(value_var3);
+
+	
+IF TimerOn.Q THEN
+	xTrigger := TRUE; 
+	xJSONTrigger := TRUE;
+	TimerOn(IN := FALSE);
+
+	IF NOT oFbPublishMQTT_2.xBusy THEN
+
+		// Copy payload string
+		dwBytesCount := Length(sPayload);
+		MemCopy(pDest := ADR(aBuffer), pSource := ADR(sPayload), udiSize := dwBytesCount);
+		
+		// Trigger the transmission
+		xTrigger := TRUE;
+		
+	ELSE
+		// Busy statistics counter
+		dwBusyCounter := dwBusyCounter + 1;
+	END_IF
+	
+	IF oFbPublishMQTT_2.xError THEN
+		// Error statistics counter
+		dwErrorCounter := dwErrorCounter + 1;
+	END_IF
+	
+END_IF
+
+oFbJson(sJSON_BaseFrame := MyTemplateString,
+	aParameterValues := MyValueArray,
+	xTrigger := xJSONTrigger,
+	sOutput := sPayload);	
+
+oFbPublishMqtt_2(sTopic:= '/v2.0/devices/joes_test',
+	eQualityOfService:= 1,
+	dwSize := dwBytesCount,
+	aData := aBuffer,
+	xTrigger := xTrigger);
+	
+	oFBSubMQTT_2(xSubscribe := TRUE,
+		sTopic := '/v2.0/devices/joes_test/output/lv',
+		eQos := 1,
+		aPayloadData := aSubBuffer,
+		xDataReceived => xDataReceived,
+		dwRxNBytes => dwSubSize,
+		sReceivedTopic => ,);
+		
+		IF xDataReceived THEN
+			memcopy(pDest := ADR(GVL.sUbi_Switch), pSource := ADR(aSubBuffer),udiSize := dwSubSize);
+		END_IF
+
+
+GVL.xUbi_Switch := REAL_TO_BOOL(STRING_TO_REAL(GVL.sUbi_Switch));
