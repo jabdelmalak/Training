@@ -1,0 +1,160 @@
+[
+    {
+        "id": "1a6ee63ba9d476ed",
+        "type": "inject",
+        "z": "54fd09f42eeda60f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 950,
+        "y": 620,
+        "wires": [
+            [
+                "ad49072af7d8b7ce"
+            ]
+        ]
+    },
+    {
+        "id": "2cc58ca056689843",
+        "type": "debug",
+        "z": "54fd09f42eeda60f",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1460,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "ad49072af7d8b7ce",
+        "type": "function",
+        "z": "54fd09f42eeda60f",
+        "name": "function 1",
+        "func": "msg.payload = {\n    \"metrics\": [\n        {\n            \"name\": \"Machine1/Speed\",\n            // Timestamp  is optional.\n            \"timestamp\" : new Date(),\n            \"value\": 11\n        }\n    ]\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1240,
+        "y": 620,
+        "wires": [
+            [
+                "90d3809f0991450f"
+            ]
+        ]
+    },
+    {
+        "id": "90d3809f0991450f",
+        "type": "mqtt sparkplug device",
+        "z": "54fd09f42eeda60f",
+        "name": "Joesdevice",
+        "metrics": {
+            "Machine1/Speed": {
+                "dataType": "Int32"
+            }
+        },
+        "broker": "3f132999ca9b74cf",
+        "birthImmediately": true,
+        "x": 1470,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a8f5e166f7ac5d92",
+        "type": "mqtt sparkplug in",
+        "z": "54fd09f42eeda60f",
+        "name": "",
+        "topic": "spBv1.0/+/+/+/Joesdevice",
+        "qos": "2",
+        "broker": "3f132999ca9b74cf",
+        "x": 1150,
+        "y": 680,
+        "wires": [
+            [
+                "2cc58ca056689843"
+            ]
+        ]
+    },
+    {
+        "id": "c2571ddb01aefacc",
+        "type": "inject",
+        "z": "54fd09f42eeda60f",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 950,
+        "y": 780,
+        "wires": [
+            [
+                "6c1fc66c3ca6aab8"
+            ]
+        ]
+    },
+    {
+        "id": "6c1fc66c3ca6aab8",
+        "type": "mqtt sparkplug out",
+        "z": "54fd09f42eeda60f",
+        "name": "",
+        "topic": "spBv1.0/+/DDEATH/+/Joesdevice",
+        "qos": "",
+        "retain": "",
+        "broker": "3f132999ca9b74cf",
+        "x": 1540,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "3f132999ca9b74cf",
+        "type": "mqtt-sparkplug-broker",
+        "name": "",
+        "deviceGroup": "SparkplugDevices",
+        "eonName": "Node-Red",
+        "broker": "192.168.1.35",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "enableStoreForward": false,
+        "compressAlgorithm": "",
+        "aliasMetrics": false,
+        "primaryScada": ""
+    }
+]
