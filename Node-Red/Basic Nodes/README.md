@@ -33,7 +33,11 @@ The ```msg.topic``` property is used as the an identifier to establish the sourc
 
 ## msg._msgid
 
-The ```msg._msgid```
+The ```msg._msgid``` is the unique ID from the **STARTING** Node. The below example shows the ```_msgid```  across several nodes with the same starting node, all showing the same ID.
+
+![image](https://user-images.githubusercontent.com/42245728/236533736-95dc9bc4-f4f3-4751-98f3-1e8947a6cd29.png)
+
+![image](https://user-images.githubusercontent.com/42245728/236533816-484e7a6a-5551-460e-bb52-c02732403ff2.png)
 
 
 
