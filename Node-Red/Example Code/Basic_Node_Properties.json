@@ -1,0 +1,122 @@
+[
+    {
+        "id": "7da66a1c6cd0b745",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4d8262cd83408b77",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "16214eef5a270bbd"
+            ]
+        ]
+    },
+    {
+        "id": "16214eef5a270bbd",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ec54f7ed66fb4c51",
+        "type": "comment",
+        "z": "7da66a1c6cd0b745",
+        "name": "Complete message Object",
+        "info": "Show output of a node \n(ID, payload, and Topic)",
+        "x": 170,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "d80c29193e31e999",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Time",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 520,
+        "wires": [
+            [
+                "53bed95ea6578874"
+            ]
+        ]
+    },
+    {
+        "id": "53bed95ea6578874",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "8f31b4cf6fd99e1e",
+        "type": "comment",
+        "z": "7da66a1c6cd0b745",
+        "name": "Message object w/ a topic",
+        "info": "",
+        "x": 150,
+        "y": 440,
+        "wires": []
+    }
+]
