@@ -48,3 +48,11 @@ The change setting within the change node (I know, confusing), can convert a spe
 ### Move
 
 The move function allows the payload value of the input to go to another variable within a ```flow``` or ```global``` context.
+
+While the context that you chose will update, the output of this node is ```undefined```.
+
+![image](https://user-images.githubusercontent.com/42245728/236560213-0d279457-6f41-4bbf-b132-4b170ea493d7.png)
+
+![image](https://user-images.githubusercontent.com/42245728/236560256-70db5eda-31e2-4a8c-84f9-aac16cba6d10.png)
+
+![image](https://user-images.githubusercontent.com/42245728/236560312-10f6c669-3bbc-458b-b749-647529e1d916.png)
