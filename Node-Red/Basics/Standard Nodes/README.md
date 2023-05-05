@@ -43,3 +43,8 @@ The change setting within the change node (I know, confusing), can convert a spe
 ![image](https://user-images.githubusercontent.com/42245728/236553252-84eba0c7-cbd2-4da9-93d5-9586496d9639.png)
 
 ![image](https://user-images.githubusercontent.com/42245728/236553314-b8832d2a-2532-4e18-a9e2-021ef6b0c08c.png)
+
+
+### Move
+
+The move function allows the payload value of the input to go to another variable within a ```flow``` or ```global``` context.
