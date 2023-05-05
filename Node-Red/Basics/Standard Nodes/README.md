@@ -23,10 +23,23 @@ Here, we see that I've set output 1 to pass the argument only when the input is 
 
 ## Change
 
-In order of us to fully discuss the ```change``` node accurately, we'll need to discuss what a ```context``` is in Node-Red. For now, let's just say that the ```change``` node allows you to set, delete, move, or change variables. For instance, when receiving any input, you can publish a hardcoded string message.
+In order of us to fully discuss the ```change``` node accurately, we'll need to discuss what a ```context``` is in Node-Red. For now, let's just say that the ```change``` node allows you to set, delete, move, or change variables. 
+
+### Set
+For instance, when receiving any input, you can publish a hardcoded string message.
 
 ![image](https://user-images.githubusercontent.com/42245728/236551862-c815fe50-b626-4aa5-a965-a5e4ce58d0da.png)
 
 ![image](https://user-images.githubusercontent.com/42245728/236551922-dafeae56-5f7b-402b-bb17-d67df8247c56.png)
 
 ![image](https://user-images.githubusercontent.com/42245728/236552162-96b76578-a476-4dcd-9bae-8ba317b849e8.png)
+
+### Change
+
+The change setting within the change node (I know, confusing), can convert a specific variable to your variable of choice. Here I decided to set up a change node to look for the ```Joe``` input string and replace with ```Handsome Joe```. If the node doesn't find the variable, then it simply passes the input through.
+
+![image](https://user-images.githubusercontent.com/42245728/236553196-f0967199-0622-4410-9f21-ea79aa48c6d9.png)
+
+![image](https://user-images.githubusercontent.com/42245728/236553252-84eba0c7-cbd2-4da9-93d5-9586496d9639.png)
+
+![image](https://user-images.githubusercontent.com/42245728/236553314-b8832d2a-2532-4e18-a9e2-021ef6b0c08c.png)
