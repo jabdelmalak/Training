@@ -23,7 +23,17 @@ The ```msg.payload``` property is the main output of the node that other downstr
 
 ![image](https://user-images.githubusercontent.com/42245728/236526176-496e1dd0-24b0-4aec-ae3b-c89f8096a26a.png)
 
-
 ![image](https://user-images.githubusercontent.com/42245728/236525895-1adf874b-8194-48ca-a2aa-eb45574ee770.png)
 
 Note: Don't Worry about functions yet!
+
+## msg.topic
+
+The ```msg.topic``` property is used as the an identifier to establish the source of the message. It's also a good way to increase the debugging capability of Node-Red. Depedning on how you write your code, you can use the topic within your logic.
+
+## msg._msgid
+
+The ```msg._msgid```
+
+
+
