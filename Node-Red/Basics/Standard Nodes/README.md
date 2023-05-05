@@ -45,6 +45,12 @@ The change setting within the change node (I know, confusing), can convert a spe
 ![image](https://user-images.githubusercontent.com/42245728/236553314-b8832d2a-2532-4e18-a9e2-021ef6b0c08c.png)
 
 
+The ```change``` node will also search for the characters of your choice within a larger string. Here is the example.
+
+![image](https://user-images.githubusercontent.com/42245728/236561548-7a2221fd-b122-4da7-b5ff-d8ef38957cd7.png)
+
+![image](https://user-images.githubusercontent.com/42245728/236561592-d2c853dc-eaa7-42ad-bd6f-ebffea719c93.png)
+
 ### Move
 
 The move function allows the payload value of the input to go to another variable within a ```flow``` or ```global``` context.
