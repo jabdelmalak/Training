@@ -29,7 +29,17 @@ Note: Don't Worry about functions yet!
 
 ## msg.topic
 
-The ```msg.topic``` property is used as the an identifier to establish the source of the message. It's also a good way to increase the debugging capability of Node-Red. Depedning on how you write your code, you can use the topic within your logic.
+The ```msg.topic``` property is used as the an identifier to establish the source of the message. It's also a good way to increase the debugging capability of Node-Red. 
+
+![image](https://user-images.githubusercontent.com/42245728/236540168-00456950-7875-497c-99c5-5f0cbad00911.png)
+
+![image](https://user-images.githubusercontent.com/42245728/236540096-c8e83e61-48db-47f0-bb51-1c503c37bd71.png)
+
+Depending on how you write your code, you can use the topic within your logic.
+
+![image](https://user-images.githubusercontent.com/42245728/236540891-b747bdee-f00b-4278-a842-215f6cf854af.png)
+
+![image](https://user-images.githubusercontent.com/42245728/236540966-9f37ed41-9636-4676-95a0-138977ab1569.png)
 
 ## msg._msgid
 
