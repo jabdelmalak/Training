@@ -62,3 +62,10 @@ While the context that you chose will update, the output of this node is ```unde
 ![image](https://user-images.githubusercontent.com/42245728/236560256-70db5eda-31e2-4a8c-84f9-aac16cba6d10.png)
 
 ![image](https://user-images.githubusercontent.com/42245728/236560312-10f6c669-3bbc-458b-b749-647529e1d916.png)
+
+### Delete
+
+The delete function within the change node allows for the removal of variables within a specific context
+
+![image](https://github.com/jabdelmalak/Training/assets/42245728/f6967cc7-59bf-41a0-a5ac-a4a2680b1fa8)
+
