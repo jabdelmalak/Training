@@ -3,7 +3,7 @@
         "id": "8a6abb2566038cad",
         "type": "tab",
         "label": "Standard Nodes",
-        "disabled": false,
+        "disabled": true,
         "info": "",
         "env": []
     },
