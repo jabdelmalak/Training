@@ -1,0 +1,274 @@
+[
+    {
+        "id": "6048a8437618699b",
+        "type": "tab",
+        "label": "Contexts flow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a1962f5efa19e08a",
+        "type": "change",
+        "z": "6048a8437618699b",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Numbertest",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 470,
+        "y": 120,
+        "wires": [
+            [
+                "f42dd257ca316ab4"
+            ]
+        ]
+    },
+    {
+        "id": "de10386ac262cc6b",
+        "type": "inject",
+        "z": "6048a8437618699b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "123",
+        "payloadType": "num",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "a1962f5efa19e08a"
+            ]
+        ]
+    },
+    {
+        "id": "f42dd257ca316ab4",
+        "type": "debug",
+        "z": "6048a8437618699b",
+        "name": "debug 30",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6a10291b865d67d2",
+        "type": "function",
+        "z": "6048a8437618699b",
+        "name": "Set a flow context variable",
+        "func": "flow.set(\"functiontest.NumberTest\", msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 200,
+        "wires": [
+            [
+                "4b3e56dfce04b68b"
+            ]
+        ]
+    },
+    {
+        "id": "f9f50b8ffba66278",
+        "type": "inject",
+        "z": "6048a8437618699b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "123",
+        "payloadType": "num",
+        "x": 170,
+        "y": 200,
+        "wires": [
+            [
+                "6a10291b865d67d2"
+            ]
+        ]
+    },
+    {
+        "id": "4b3e56dfce04b68b",
+        "type": "debug",
+        "z": "6048a8437618699b",
+        "name": "debug 31",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "837bd5f1e94bdfff",
+        "type": "function",
+        "z": "6048a8437618699b",
+        "name": "get flow context variable",
+        "func": "var input = flow.get(\"functiontest.NumberTest\");\n\nmsg.payload = input;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 460,
+        "wires": [
+            [
+                "99156e67c0a33ea7"
+            ]
+        ]
+    },
+    {
+        "id": "99156e67c0a33ea7",
+        "type": "debug",
+        "z": "6048a8437618699b",
+        "name": "debug 32",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "1919c088be4cb9b7",
+        "type": "inject",
+        "z": "6048a8437618699b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 170,
+        "y": 460,
+        "wires": [
+            [
+                "837bd5f1e94bdfff"
+            ]
+        ]
+    },
+    {
+        "id": "1f3b2bf701a0327f",
+        "type": "function",
+        "z": "6048a8437618699b",
+        "name": "get flow context variable (V2)",
+        "func": "var input = {payload: flow.get(\"functiontest.NumberTest\")};\nreturn input;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 540,
+        "wires": [
+            [
+                "90e38d70b77330d4"
+            ]
+        ]
+    },
+    {
+        "id": "90e38d70b77330d4",
+        "type": "debug",
+        "z": "6048a8437618699b",
+        "name": "debug 33",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "7fa687e0e41c5790",
+        "type": "inject",
+        "z": "6048a8437618699b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 170,
+        "y": 540,
+        "wires": [
+            [
+                "1f3b2bf701a0327f"
+            ]
+        ]
+    }
+]
