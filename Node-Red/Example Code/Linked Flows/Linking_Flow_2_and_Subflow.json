@@ -1,0 +1,61 @@
+[
+    {
+        "id": "0a3d53f13b909d7b",
+        "type": "tab",
+        "label": "Linking flow 2 & Subflow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "0a42035d15950c51",
+        "type": "link in",
+        "z": "0a3d53f13b909d7b",
+        "name": "link in 1",
+        "links": [
+            "faa1d735837c885a"
+        ],
+        "x": 315,
+        "y": 240,
+        "wires": [
+            [
+                "ce053e3058a5a958"
+            ]
+        ]
+    },
+    {
+        "id": "ce053e3058a5a958",
+        "type": "template",
+        "z": "0a3d53f13b909d7b",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "This sum of my function: {{payload}} !",
+        "output": "str",
+        "x": 480,
+        "y": 260,
+        "wires": [
+            [
+                "4b6f286580ae5b03"
+            ]
+        ]
+    },
+    {
+        "id": "4b6f286580ae5b03",
+        "type": "debug",
+        "z": "0a3d53f13b909d7b",
+        "name": "debug 34",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 280,
+        "wires": []
+    }
+]
