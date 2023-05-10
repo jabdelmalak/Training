@@ -1,0 +1,353 @@
+[
+    {
+        "id": "3961faa8d3e33881",
+        "type": "subflow",
+        "name": "Subflow 1",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 140,
+                "y": 180,
+                "wires": [
+                    {
+                        "id": "475ecc213b68ee99"
+                    },
+                    {
+                        "id": "8803a3293092781c"
+                    },
+                    {
+                        "id": "d81048f6e0c42ce3"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1180,
+                "y": 220,
+                "wires": [
+                    {
+                        "id": "38ddb1f2cdead301",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99",
+        "status": {
+            "x": 1160,
+            "y": 380,
+            "wires": [
+                {
+                    "id": "ca9c824922c5f43b",
+                    "port": 0
+                }
+            ]
+        }
+    },
+    {
+        "id": "475ecc213b68ee99",
+        "type": "range",
+        "z": "3961faa8d3e33881",
+        "minin": "0",
+        "maxin": "200",
+        "minout": "50",
+        "maxout": "10",
+        "action": "clamp",
+        "round": false,
+        "property": "payload",
+        "name": "",
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "c09b4f6077fdef25"
+            ]
+        ]
+    },
+    {
+        "id": "8803a3293092781c",
+        "type": "range",
+        "z": "3961faa8d3e33881",
+        "minin": "0",
+        "maxin": "200",
+        "minout": "50",
+        "maxout": "100",
+        "action": "clamp",
+        "round": false,
+        "property": "payload",
+        "name": "",
+        "x": 320,
+        "y": 200,
+        "wires": [
+            [
+                "fa0ef8efd5f70c72"
+            ]
+        ]
+    },
+    {
+        "id": "d81048f6e0c42ce3",
+        "type": "range",
+        "z": "3961faa8d3e33881",
+        "minin": "0",
+        "maxin": "200",
+        "minout": "4",
+        "maxout": "20",
+        "action": "clamp",
+        "round": false,
+        "property": "payload",
+        "name": "",
+        "x": 310,
+        "y": 280,
+        "wires": [
+            [
+                "c1cad9d76e764579"
+            ]
+        ]
+    },
+    {
+        "id": "38ddb1f2cdead301",
+        "type": "function",
+        "z": "3961faa8d3e33881",
+        "name": "adding",
+        "func": "var struct = flow.get(\"S1\");\nvar size = Object.keys(struct).length\nvar structval = Object.values(struct)\nvar sum = 0;\n\nfor (let index = 0; index < size; index++) {\n\n    sum =  (structval[index] + sum);\n    \n}\n\nsum = {payload: sum}\nreturn sum;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c09b4f6077fdef25",
+        "type": "change",
+        "z": "3961faa8d3e33881",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "S1.add1",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fa0ef8efd5f70c72",
+        "type": "change",
+        "z": "3961faa8d3e33881",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "S1.add2",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1cad9d76e764579",
+        "type": "change",
+        "z": "3961faa8d3e33881",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "S1.add3",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 280,
+        "wires": [
+            [
+                "9e2e0bc264692d18"
+            ]
+        ]
+    },
+    {
+        "id": "ca9c824922c5f43b",
+        "type": "function",
+        "z": "3961faa8d3e33881",
+        "name": "function 6",
+        "func": "msg.payload = Object.values(flow.get(\"S1\"));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9e2e0bc264692d18",
+        "type": "delay",
+        "z": "3961faa8d3e33881",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "20",
+        "timeoutUnits": "milliseconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 750,
+        "y": 280,
+        "wires": [
+            [
+                "ca9c824922c5f43b",
+                "38ddb1f2cdead301"
+            ]
+        ]
+    },
+    {
+        "id": "8b9f3ffbc711d5af",
+        "type": "tab",
+        "label": "Linking flow 1 & Subflow",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "38e2eb410f5e75b8",
+        "type": "inject",
+        "z": "8b9f3ffbc711d5af",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "250",
+        "payloadType": "num",
+        "x": 210,
+        "y": 200,
+        "wires": [
+            [
+                "a0738c58625aaa40"
+            ]
+        ]
+    },
+    {
+        "id": "a0738c58625aaa40",
+        "type": "subflow:3961faa8d3e33881",
+        "z": "8b9f3ffbc711d5af",
+        "name": "S1 Instance 1",
+        "x": 470,
+        "y": 200,
+        "wires": [
+            [
+                "faa1d735837c885a"
+            ]
+        ]
+    },
+    {
+        "id": "faa1d735837c885a",
+        "type": "link out",
+        "z": "8b9f3ffbc711d5af",
+        "name": "link out 1",
+        "mode": "link",
+        "links": [
+            "0a42035d15950c51"
+        ],
+        "x": 695,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b0cc423e599d11c8",
+        "type": "subflow:3961faa8d3e33881",
+        "z": "8b9f3ffbc711d5af",
+        "name": "S1 Instance 2",
+        "x": 470,
+        "y": 300,
+        "wires": [
+            [
+                "faa1d735837c885a"
+            ]
+        ]
+    },
+    {
+        "id": "68da114fa7b265e2",
+        "type": "inject",
+        "z": "8b9f3ffbc711d5af",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "53",
+        "payloadType": "num",
+        "x": 210,
+        "y": 300,
+        "wires": [
+            [
+                "b0cc423e599d11c8"
+            ]
+        ]
+    }
+]
