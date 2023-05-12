@@ -1,0 +1,718 @@
+[
+    {
+        "id": "b17a5b2eb5a29a06",
+        "type": "tab",
+        "label": "Functions",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9730f6022e35464f",
+        "type": "function",
+        "z": "b17a5b2eb5a29a06",
+        "name": "payload manipulation",
+        "func": "var time = msg.payload;\n\nmsg = {payload: time/2000};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "// Code added here will be run once\n// whenever the node is started.\nnode.warn(\"On Start Code\")",
+        "finalize": "// Code added here will be run when the\n// node is being stopped or re-deployed.\nnode.warn(\"On Stop Code\")",
+        "libs": [],
+        "x": 520,
+        "y": 160,
+        "wires": [
+            [
+                "ddaf30342e0fa038"
+            ]
+        ]
+    },
+    {
+        "id": "e615756fc94d8b30",
+        "type": "inject",
+        "z": "b17a5b2eb5a29a06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 160,
+        "wires": [
+            [
+                "9730f6022e35464f"
+            ]
+        ]
+    },
+    {
+        "id": "ddaf30342e0fa038",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "debug 35",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 760,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "55e2ae9c4a7fb629",
+        "type": "comment",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Show payloads in functions",
+        "info": "",
+        "x": 230,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "5ea8f0837656925b",
+        "type": "function",
+        "z": "b17a5b2eb5a29a06",
+        "name": "if statement function",
+        "func": "var output;\n\nif (msg.payload == 0) {\n    output = {payload: \"The output is 0\"}\n} else {\n    output = { payload: \"The output is 1\" }\n}\nreturn output;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 420,
+        "wires": [
+            [
+                "e32b6f099c6b1a44"
+            ]
+        ]
+    },
+    {
+        "id": "92e89849e6ccac9c",
+        "type": "inject",
+        "z": "b17a5b2eb5a29a06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 250,
+        "y": 380,
+        "wires": [
+            [
+                "5ea8f0837656925b"
+            ]
+        ]
+    },
+    {
+        "id": "a47ce2b894d1d96b",
+        "type": "inject",
+        "z": "b17a5b2eb5a29a06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 250,
+        "y": 460,
+        "wires": [
+            [
+                "5ea8f0837656925b"
+            ]
+        ]
+    },
+    {
+        "id": "e32b6f099c6b1a44",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "debug 36",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "3bde1494d6a26f2c",
+        "type": "comment",
+        "z": "b17a5b2eb5a29a06",
+        "name": "if/else",
+        "info": "",
+        "x": 150,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "397ac3142a53c469",
+        "type": "function",
+        "z": "b17a5b2eb5a29a06",
+        "name": "for loop",
+        "func": "var struct = msg.payload;\nvar size = struct.metrics.length\nvar sum = 0;\n\n\nfor (let index = 0; index < size; index++) {\n    sum = struct.metrics[index].value +sum\n    \n}\n\nlet payload = {payload: sum}\nreturn payload;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 700,
+        "wires": [
+            [
+                "90361b49d5bd80ce"
+            ]
+        ]
+    },
+    {
+        "id": "fddd0351a022b6c1",
+        "type": "function",
+        "z": "b17a5b2eb5a29a06",
+        "name": "payload def",
+        "func": "msg.payload = {\n    \"metrics\": [\n        {\n            \"name\": \"Machine1/Speed\",\n            // Timestamp  is optional.\n            //\"timestamp\" : new Date(),\n            \"value\": 22\n        },\n        {\n\n            \"name\": \"Machine2/Time\",\n            // Timestamp  is optional.\n            \"timestamp\": new Date(),\n            \"value\": 234\n        }\n    ]\n\n};\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 700,
+        "wires": [
+            [
+                "397ac3142a53c469"
+            ]
+        ]
+    },
+    {
+        "id": "7db3b0e38e2f45c5",
+        "type": "inject",
+        "z": "b17a5b2eb5a29a06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 230,
+        "y": 700,
+        "wires": [
+            [
+                "fddd0351a022b6c1"
+            ]
+        ]
+    },
+    {
+        "id": "90361b49d5bd80ce",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "debug 37",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "6c4c354af21feb6d",
+        "type": "comment",
+        "z": "b17a5b2eb5a29a06",
+        "name": "for loop",
+        "info": "",
+        "x": 130,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "e694d2175e3897ef",
+        "type": "function",
+        "z": "b17a5b2eb5a29a06",
+        "name": "sort & Multiple outputs",
+        "func": "var newArray =  msg.payload.sort((function (a, b) {\n        return a - b;\n    })\n);\n\n\n\nvar msg1 = {payload: newArray[0]};\nvar msg2 = {payload: newArray[1]};\nvar msg3 = {payload: newArray[2]};\nvar msg4 = {payload: newArray[3]};\nvar msg5 = {payload: newArray[4]};\nvar msg6 = { payload: newArray[5]};\n\n\n\nreturn [msg1,msg2,msg3,msg4];",
+        "outputs": 4,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1040,
+        "wires": [
+            [
+                "9cec6be6213d05e0"
+            ],
+            [
+                "457dd8d2bf50e37a"
+            ],
+            [
+                "8abe13a96d7da23b"
+            ],
+            [
+                "b4603346f39e3b9c"
+            ]
+        ]
+    },
+    {
+        "id": "238e28bd6214614c",
+        "type": "comment",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Mutliple output function",
+        "info": "",
+        "x": 220,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "0b73da53faf75e18",
+        "type": "inject",
+        "z": "b17a5b2eb5a29a06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[1,9.6,73,120984,3,64]",
+        "payloadType": "json",
+        "x": 280,
+        "y": 1040,
+        "wires": [
+            [
+                "e694d2175e3897ef"
+            ]
+        ]
+    },
+    {
+        "id": "9cec6be6213d05e0",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "457dd8d2bf50e37a",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "8abe13a96d7da23b",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "b4603346f39e3b9c",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "548479a267d31d4d",
+        "type": "function",
+        "z": "b17a5b2eb5a29a06",
+        "name": "sort & Multiple outputs",
+        "func": "var newArray =  msg.payload.sort((function (a, b) {\n        return a - b;\n    })\n);\n\nvar arrMsg = [{}]\n\nfor (let i=0;i<=newArray.length;i++)  {\n    arrMsg[i] = {payload: newArray[i]};\n};\n\n\nreturn arrMsg",
+        "outputs": 6,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 1380,
+        "wires": [
+            [
+                "616a8ddfbc80774d"
+            ],
+            [
+                "efab6cb84d8b1640"
+            ],
+            [
+                "6d24aa9acc73ce5e"
+            ],
+            [
+                "811b7ddf60c18b71"
+            ],
+            [
+                "eaeaae4055dcc686"
+            ],
+            [
+                "c33aeeb20e946a14"
+            ]
+        ]
+    },
+    {
+        "id": "898d87de2504a5c5",
+        "type": "comment",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Mutliple output function (dynamic)",
+        "info": "",
+        "x": 290,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "b2562911fa0eb30e",
+        "type": "inject",
+        "z": "b17a5b2eb5a29a06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[1,9.6,73,120984,3,64]",
+        "payloadType": "json",
+        "x": 280,
+        "y": 1380,
+        "wires": [
+            [
+                "548479a267d31d4d"
+            ]
+        ]
+    },
+    {
+        "id": "616a8ddfbc80774d",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "efab6cb84d8b1640",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "6d24aa9acc73ce5e",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "811b7ddf60c18b71",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1400,
+        "wires": []
+    },
+    {
+        "id": "eaf5054cda41b0a5",
+        "type": "function",
+        "z": "b17a5b2eb5a29a06",
+        "name": "function 6",
+        "func": "msg.payload = flow.keys\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 1760,
+        "wires": [
+            [
+                "d18a35eef8e7f2fd"
+            ]
+        ]
+    },
+    {
+        "id": "b7ecaa2ca9955b5c",
+        "type": "inject",
+        "z": "b17a5b2eb5a29a06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1760,
+        "wires": [
+            [
+                "eaf5054cda41b0a5"
+            ]
+        ]
+    },
+    {
+        "id": "d18a35eef8e7f2fd",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "debug 38",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 1760,
+        "wires": []
+    },
+    {
+        "id": "f022101909d9f594",
+        "type": "function",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Set a flow context variable",
+        "func": "flow.set(\"functiontest.NumberTest\", msg.payload)\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 1700,
+        "wires": [
+            [
+                "5e7d3c9876245209"
+            ]
+        ]
+    },
+    {
+        "id": "eb56f64d3b0ae678",
+        "type": "inject",
+        "z": "b17a5b2eb5a29a06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "123",
+        "payloadType": "num",
+        "x": 150,
+        "y": 1700,
+        "wires": [
+            [
+                "f022101909d9f594"
+            ]
+        ]
+    },
+    {
+        "id": "5e7d3c9876245209",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "debug 39",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "eaeaae4055dcc686",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1440,
+        "wires": []
+    },
+    {
+        "id": "c33aeeb20e946a14",
+        "type": "debug",
+        "z": "b17a5b2eb5a29a06",
+        "name": "Output 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 1480,
+        "wires": []
+    }
+]
