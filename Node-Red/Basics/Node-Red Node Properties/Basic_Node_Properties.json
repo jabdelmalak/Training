@@ -1,0 +1,566 @@
+[
+    {
+        "id": "7da66a1c6cd0b745",
+        "type": "tab",
+        "label": "Node-Red Message properties",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "4d8262cd83408b77",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "16214eef5a270bbd"
+            ]
+        ]
+    },
+    {
+        "id": "16214eef5a270bbd",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ec54f7ed66fb4c51",
+        "type": "comment",
+        "z": "7da66a1c6cd0b745",
+        "name": "Complete message Object",
+        "info": "Show output of a node \n(ID, payload, and Topic)",
+        "x": 170,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "d80c29193e31e999",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Time",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 520,
+        "wires": [
+            [
+                "53bed95ea6578874"
+            ]
+        ]
+    },
+    {
+        "id": "53bed95ea6578874",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "_msgid",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "8f31b4cf6fd99e1e",
+        "type": "comment",
+        "z": "7da66a1c6cd0b745",
+        "name": "Message object w/ a topic",
+        "info": "",
+        "x": 150,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "9026c655785a529a",
+        "type": "comment",
+        "z": "7da66a1c6cd0b745",
+        "name": "Simple Payload",
+        "info": "",
+        "x": 100,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "48c0f2c370112fbd",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 110,
+        "y": 1000,
+        "wires": [
+            [
+                "8808ec178dbe21e9"
+            ]
+        ]
+    },
+    {
+        "id": "8808ec178dbe21e9",
+        "type": "function",
+        "z": "7da66a1c6cd0b745",
+        "name": "function 4",
+        "func": "msg.payload = {\"PayloadArray\": [\n    {\n        \"name\": \"Message1\",\n        // Timestamp  is optional.\n        //\"timestamp\" : new Date(),\n        \"value\": 22\n    },\n    {\n\n        \"name\": \"Message2\",\n        // Timestamp  is optional.\n        \"timestamp\": new Date(),\n        \"value\": 234\n    }\n]}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1000,
+        "wires": [
+            [
+                "75d05dd8c4edf415"
+            ]
+        ]
+    },
+    {
+        "id": "75d05dd8c4edf415",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "793b6f698929c8a9",
+        "type": "comment",
+        "z": "7da66a1c6cd0b745",
+        "name": "Complex Payload",
+        "info": "",
+        "x": 100,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "6c0a9fd21962f6d8",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 110,
+        "y": 740,
+        "wires": [
+            [
+                "4fa08218f8667027"
+            ]
+        ]
+    },
+    {
+        "id": "4fa08218f8667027",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "6a17f4617f811409",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 110,
+        "y": 1800,
+        "wires": [
+            [
+                "9cabbd581c0b4a43",
+                "c65860d676ba56ba"
+            ]
+        ]
+    },
+    {
+        "id": "9cabbd581c0b4a43",
+        "type": "function",
+        "z": "7da66a1c6cd0b745",
+        "name": "function 5",
+        "func": "msg.payload = {\"PayloadArray\": [\n    {\n        \"name\": \"Message1\",\n        // Timestamp  is optional.\n        //\"timestamp\" : new Date(),\n        \"value\": 22\n    },\n    {\n\n        \"name\": \"Message2\",\n        // Timestamp  is optional.\n        \"timestamp\": new Date(),\n        \"value\": 234\n    }\n]}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1800,
+        "wires": [
+            [
+                "ed7a8d19aed0d2c7",
+                "7fc3ce0f63dfe77f"
+            ]
+        ]
+    },
+    {
+        "id": "ed7a8d19aed0d2c7",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 1800,
+        "wires": []
+    },
+    {
+        "id": "7fc3ce0f63dfe77f",
+        "type": "json",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 370,
+        "y": 2000,
+        "wires": [
+            [
+                "0bb50fa2d083a1ab"
+            ]
+        ]
+    },
+    {
+        "id": "0bb50fa2d083a1ab",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 2000,
+        "wires": []
+    },
+    {
+        "id": "0631e9a1fd83bfb4",
+        "type": "comment",
+        "z": "7da66a1c6cd0b745",
+        "name": "Consistent _msgid",
+        "info": "Looking at the three outputs of the msg object,\nyou can see that the _msgid is the same.",
+        "x": 130,
+        "y": 1740,
+        "wires": []
+    },
+    {
+        "id": "c65860d676ba56ba",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 280,
+        "y": 1860,
+        "wires": []
+    },
+    {
+        "id": "f0f22163b1f1c480",
+        "type": "comment",
+        "z": "7da66a1c6cd0b745",
+        "name": "Multiple msg topics",
+        "info": ".",
+        "x": 110,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "ed393a9d413dacae",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Time1",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1260,
+        "wires": [
+            [
+                "9bdc7b76ba6f4494"
+            ]
+        ]
+    },
+    {
+        "id": "d7d711eb025da700",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Time2",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1340,
+        "wires": [
+            [
+                "9bdc7b76ba6f4494"
+            ]
+        ]
+    },
+    {
+        "id": "9bdc7b76ba6f4494",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 14",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "b1e6b039bc1e1f69",
+        "type": "comment",
+        "z": "7da66a1c6cd0b745",
+        "name": "Multiple msg topics w/ logic",
+        "info": ".",
+        "x": 130,
+        "y": 1460,
+        "wires": []
+    },
+    {
+        "id": "d6e5521f75c80463",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Time1",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1520,
+        "wires": [
+            [
+                "110ab196353554fd"
+            ]
+        ]
+    },
+    {
+        "id": "afee71d583885a73",
+        "type": "inject",
+        "z": "7da66a1c6cd0b745",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "Time2",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1600,
+        "wires": [
+            [
+                "110ab196353554fd"
+            ]
+        ]
+    },
+    {
+        "id": "88ea0a6e037ec18c",
+        "type": "debug",
+        "z": "7da66a1c6cd0b745",
+        "name": "debug 15",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 1560,
+        "wires": []
+    },
+    {
+        "id": "110ab196353554fd",
+        "type": "function",
+        "z": "7da66a1c6cd0b745",
+        "name": "Topic filter",
+        "func": "var topic = msg.topic;\n\nif (topic != 'Time1') \n{\n    msg.payload = 'Error, Not correct Topic';\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 1560,
+        "wires": [
+            [
+                "88ea0a6e037ec18c"
+            ]
+        ]
+    }
+]
